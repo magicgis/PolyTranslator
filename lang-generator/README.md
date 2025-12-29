@@ -86,6 +86,13 @@ The crate supports all major languages defined in the ISO 639 standard, includin
 - Russian (ru)
 - And many more...
 
+## 📧 Contact
+
+If you have any questions or suggestions, please contact us through:
+
+- Create an [Issue](https://github.com/magicgis/PolyTranslator/issues)
+- Send an email to: 63542424@163.com
+
 ## License
 
 MIT

@@ -1,10 +1,10 @@
 [package]
 name = "poly-translator"
 edition = "2021"
-version = "1.0.3"
+version = "1.0.5"
 description = "A high-performance multilingual translation library supporting multiple translation services"
 license = "MIT"
-# # # # # # # # # # # # # # publish = false
+# publish = false
 
 [features]
 

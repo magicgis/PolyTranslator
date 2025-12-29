@@ -3,12 +3,11 @@ setlocal enabledelayedexpansion
 chcp 65001 >nul
 
 echo ============================================
-echo   Rust Crate Auto Publisher
+echo   poly-translator Publisher
 echo ============================================
 echo.
 
 set "CARGO_TOML=%~dp0Cargo.toml"
-set "LANG_GEN_TOML=%~dp0lang-generator\Cargo.toml"
 
 set "CURRENT_VERSION="
 for /f "usebackq tokens=1,* delims==" %%a in ("%CARGO_TOML%") do (
@@ -23,29 +22,14 @@ for /f "usebackq tokens=1,* delims==" %%a in ("%CARGO_TOML%") do (
     )
 )
 
-set "LANG_GEN_VERSION="
-for /f "usebackq tokens=1,* delims==" %%a in ("%LANG_GEN_TOML%") do (
-    echo %%a | findstr /i "version" >nul
-    if !errorlevel! equ 0 (
-        if not defined LANG_GEN_VERSION (
-            set "line=%%b"
-            set "line=!line:"=!"
-            set "line=!line: =!"
-            for /f "tokens=* delims= " %%v in ("!line!") do set "LANG_GEN_VERSION=%%v"
-        )
-    )
-)
-
 if not defined CURRENT_VERSION set "CURRENT_VERSION=1.0.1"
-if not defined LANG_GEN_VERSION set "LANG_GEN_VERSION=1.0.1"
 
-echo Main crate version: %CURRENT_VERSION%
-echo lang-generator version: %LANG_GEN_VERSION%
+echo poly-translator version: %CURRENT_VERSION%
 echo.
 
 findstr /c:"publish = false" "%CARGO_TOML%" >nul
 if !errorlevel! equ 0 (
-    echo WARNING: Found publish = false in main Cargo.toml
+    echo WARNING: Found publish = false in Cargo.toml
     echo Remove temporarily? (y/n)
     set /p "confirm=> "
     if /i "!confirm!"=="y" (
@@ -114,8 +98,7 @@ echo ============================================
 echo   Publish Confirmation
 echo ============================================
 echo.
-echo Packages to publish:
-echo   - lang-generator v%LANG_GEN_VERSION%
+echo Package to publish:
 echo   - poly-translator v%CURRENT_VERSION%
 echo.
 echo Confirm publish to crates.io? (y/n)
@@ -130,25 +113,8 @@ if /i not "!confirm!"=="y" (
 )
 
 echo.
-echo 4. Publishing lang-generator...
+echo 4. Publishing poly-translator v%CURRENT_VERSION%...
 echo NOTE: This may take a moment...
-cd /d "%~dp0lang-generator"
-cargo publish
-if !errorlevel! neq 0 (
-    echo.
-    echo ERROR: lang-generator publish FAILED
-    cd /d "%~dp0"
-    if "!NEED_RESTORE!"=="true" (
-        copy "%CARGO_TOML%.backup" "%CARGO_TOML%" >nul
-        del "%CARGO_TOML%.backup" >nul
-    )
-    exit /b 1
-)
-echo lang-generator published successfully!
-
-echo.
-echo 5. Publishing poly-translator...
-cd /d "%~dp0"
 cargo publish
 if !errorlevel! neq 0 (
     echo Publish FAILED
@@ -164,9 +130,7 @@ echo ============================================
 echo   Success!
 echo ============================================
 echo.
-echo Published packages:
-echo   - lang-generator v%LANG_GEN_VERSION%
-echo     https://crates.io/crates/lang-generator
+echo Published package:
 echo   - poly-translator v%CURRENT_VERSION%
 echo     https://crates.io/crates/poly-translator
 echo     https://docs.rs/poly-translator/%CURRENT_VERSION%

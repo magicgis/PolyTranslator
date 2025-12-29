@@ -2,3 +2,4 @@
 /.env
 /Cargo.lock
 /lang-generator/target
+/lang-generator/Cargo.lock
