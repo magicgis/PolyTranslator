@@ -14,7 +14,6 @@ pub trait AsyncTranslator: Send + Sync {
     /// # 返回值
     /// - `true`: 本地翻译器
     /// - `false`: 远程翻译器
-    #[allow(dead_code)]
     fn local(&self) -> bool;
 
     /// 翻译单个文本
@@ -72,7 +71,6 @@ pub struct TranslationOutput {
 ///
 /// 包含翻译后的文本数组和检测到的语言信息
 #[derive(Clone, Debug)]
-#[allow(dead_code)]
 pub struct TranslationListOutput {
     /// 翻译后的文本数组
     pub text: Vec<String>,

@@ -6,7 +6,6 @@ use serde_json::Value;
 /// 阿里翻译器实现
 ///
 /// 通过调用阿里巴巴翻译API实现文本翻译功能
-#[allow(dead_code)]
 pub struct AlibabaTranslator {
     /// 文本翻译的最大长度限制
     input_limit: u32,
@@ -32,7 +31,6 @@ impl Default for AlibabaTranslator {
 /// # 返回值
 /// - `Ok(())` - 长度在限制范围内
 /// - `Err(TranslatorError::RequestToLong)` - 长度超出限制
-#[allow(dead_code)]
 pub fn input_limit_checker(query: &str, input_limit: u32) -> Result<(), TranslatorError> {
     if query.len() > input_limit as usize {
         return Err(TranslatorError::RequestToLong(query.len() as u32, input_limit));

@@ -35,7 +35,6 @@ impl std::str::FromStr for TranslatorType {
 
 impl TranslatorType {
     /// 从字符串解析翻译器类型
-    #[allow(dead_code)]
     pub fn parse(s: &str) -> Option<Self> {
         Self::from_str(s).ok()
     }
@@ -55,7 +54,6 @@ impl TranslatorType {
 
 /// 翻译器配置
 #[derive(Debug, Clone)]
-#[allow(dead_code)]
 pub enum TranslatorConfig {
     Baidu { app_id: String, key: String },
     Youdao { app_key: String, app_secret: String },
@@ -107,7 +105,6 @@ impl TranslatorFactory {
     }
 
     /// 从环境变量创建翻译器（便捷方法）
-    #[allow(dead_code)]
     pub fn create_from_env(translator_type: TranslatorType) -> Result<Arc<dyn AsyncTranslator>, String> {
         match translator_type {
             TranslatorType::Baidu => {

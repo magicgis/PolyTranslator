@@ -33,7 +33,6 @@ struct CaiyunResponse {
 /// 彩云翻译器实现
 ///
 /// 通过调用彩云科技翻译API实现文本翻译功能
-#[allow(dead_code)]
 pub struct CaiyunTranslator {
     /// HTTP客户端
     client: Client,
@@ -137,7 +136,6 @@ impl CaiyunTranslator {
     ///
     /// # 返回值
     /// 新的翻译器实例
-    #[allow(dead_code)]
     pub fn new(token: &str, request_id: &str) -> Self {
         Self {
             client: Client::new(),
@@ -185,6 +183,7 @@ mod tests {
     #[cfg(test)]
     #[tokio::test]
     async fn test_translate_chinese_to_english() {
+        dotenv::dotenv().ok();
         let token = std::env::var("CAIYUN_TOKEN").expect("请设置 CAIYUN_TOKEN 环境变量");
         let request_id = std::env::var("CAIYUN_REQUEST_ID").unwrap_or_else(|_| "demo".to_string());
         let translator = CaiyunTranslator::new(&token, &request_id);
@@ -203,6 +202,7 @@ mod tests {
     #[cfg(test)]
     #[tokio::test]
     async fn test_translate_english_to_chinese() {
+        dotenv::dotenv().ok();
         let token = std::env::var("CAIYUN_TOKEN").expect("请设置 CAIYUN_TOKEN 环境变量");
         let request_id = std::env::var("CAIYUN_REQUEST_ID").unwrap_or_else(|_| "demo".to_string());
         let translator = CaiyunTranslator::new(&token, &request_id);

@@ -10,7 +10,6 @@ use uuid::{Context, Timestamp, Uuid};
 /// 有道翻译器实现
 ///
 /// 通过调用有道翻译API实现文本翻译功能
-#[allow(dead_code)]
 pub struct YoudaoTranslator {
     /// HTTP客户端
     client: reqwest::Client,
@@ -384,6 +383,7 @@ mod tests {
     #[cfg(test)]
     #[tokio::test]
     async fn test_translate_chinese_to_english() {
+        dotenv::dotenv().ok();
         let app_key = std::env::var("YOUDAO_APP_KEY").expect("请设置 YOUDAO_APP_KEY 环境变量");
         let app_secret = std::env::var("YOUDAO_APP_SECRET").expect("请设置 YOUDAO_APP_SECRET 环境变量");
         let translator = YoudaoTranslator::new(&app_key, &app_secret);
@@ -402,6 +402,7 @@ mod tests {
     #[cfg(test)]
     #[tokio::test]
     async fn test_translate_english_to_chinese() {
+        dotenv::dotenv().ok();
         let app_key = std::env::var("YOUDAO_APP_KEY").expect("请设置 YOUDAO_APP_KEY 环境变量");
         let app_secret = std::env::var("YOUDAO_APP_SECRET").expect("请设置 YOUDAO_APP_SECRET 环境变量");
         let translator = YoudaoTranslator::new(&app_key, &app_secret);

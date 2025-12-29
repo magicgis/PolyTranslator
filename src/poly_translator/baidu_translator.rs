@@ -6,7 +6,6 @@ use crate::poly_translator::translator_error::{ApiError, TranslatorError};
 /// 百度翻译器实现
 ///
 /// 通过调用百度翻译API实现文本翻译功能
-#[allow(dead_code)]
 pub struct BaiduTranslator {
     /// API请求地址
     url: String,
@@ -126,7 +125,6 @@ impl BaiduTranslator {
 ///
 /// 用于构造百度翻译API的请求参数
 #[derive(Debug, Serialize)]
-#[allow(dead_code)]
 pub struct Form {
     /// 待翻译文本
     pub q: String,
@@ -278,7 +276,6 @@ struct Sentence {
 ///
 /// 包含翻译结果列表和目标语言
 #[derive(Deserialize)]
-#[allow(dead_code)]
 struct TranslationResponse {
     /// 目标语言代码
     pub to: String,
@@ -418,6 +415,7 @@ mod tests {
     #[cfg(test)]
     #[tokio::test]
     async fn test_translate_chinese_to_english() {
+        dotenv::dotenv().ok();
         tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
         let app_id = std::env::var("BAIDU_APP_ID").expect("请设置 BAIDU_APP_ID 环境变量");
         let key = std::env::var("BAIDU_KEY").expect("请设置 BAIDU_KEY 环境变量");
@@ -454,7 +452,8 @@ mod tests {
     #[cfg(test)]
     #[tokio::test]
     async fn test_translate_english_to_chinese() {
-        tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+        dotenv::dotenv().ok();
+        tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
         let app_id = std::env::var("BAIDU_APP_ID").expect("请设置 BAIDU_APP_ID 环境变量");
         let key = std::env::var("BAIDU_KEY").expect("请设置 BAIDU_KEY 环境变量");
         let translator = BaiduTranslator::new(&app_id, &key);

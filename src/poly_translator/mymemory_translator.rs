@@ -7,7 +7,6 @@ use serde_json::Value;
 ///
 /// 通过调用MyMemory翻译API实现文本翻译功能
 /// MyMemory是一个免费翻译服务，支持多种语言对
-#[allow(dead_code)]
 pub struct MyMemoryTranslator {
     /// 文本翻译的最大长度限制
     input_limit: u32,
@@ -33,7 +32,6 @@ impl Default for MyMemoryTranslator {
 /// # 返回值
 /// - `Ok(())` - 长度在限制范围内
 /// - `Err(TranslatorError::RequestToLong)` - 长度超出限制
-#[allow(dead_code)]
 pub fn input_limit_checker(query: &str, input_limit: u32) -> Result<(), TranslatorError> {
     if query.len() > input_limit as usize {
         return Err(TranslatorError::RequestToLong(query.len() as u32, input_limit));
