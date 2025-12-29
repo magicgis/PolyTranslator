@@ -42,14 +42,20 @@ poly-translator/
 
 ```toml
 [dependencies]
-poly-translator = { path = "path/to/poly-translator" }
+poly-translator = "1.0.3"
+```
+或 
+
+```toml
+[dependencies]
+poly-translator = { path = "path/to/PolyTranslator" }
 ```
 
 或从 Git 安装：
 
 ```toml
 [dependencies]
-poly-translator = { git = "https://github.com/yourusername/poly-translator.git" }
+poly-translator = { git = "https://github.com/magicgis/PolyTranslator.git" }
 ```
 
 ## 🚀 快速开始
@@ -336,7 +342,7 @@ SOFTWARE.
 
 如果你有任何问题或建议，请通过以下方式联系：
 
-- 创建 [Issue](https://github.com/yourusername/rust-translator/issues)
+- 创建 [Issue](https://github.com/magicgis/PolyTranslator/issues)
 - 发送邮件至：your.email@example.com
 
 ## 🙏 致谢

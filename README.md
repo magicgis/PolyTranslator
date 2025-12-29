@@ -40,6 +40,12 @@ Add the dependency in your `Cargo.toml`:
 
 ```toml
 [dependencies]
+poly-translator = "1.0.3"
+```
+or
+
+```toml
+[dependencies]
 poly-translator = { path = "path/to/poly-translator" }
 ```
 
@@ -47,7 +53,7 @@ Or install from Git:
 
 ```toml
 [dependencies]
-poly-translator = { git = "https://github.com/yourusername/poly-translator.git" }
+poly-translator = { git = "https://github.com/magicgis/PolyTranslator.git" }
 ```
 
 ## 🚀 Quick Start
@@ -334,8 +340,8 @@ Issues and Pull Requests are welcome!
 
 If you have any questions or suggestions, please contact us through:
 
-- Create an [Issue](https://github.com/yourusername/rust-translator/issues)
-- Send an email to: your.email@example.com
+- Create an [Issue](https://github.com/magicgis/PolyTranslator/issues)
+- Send an email to: 63542424@163.com
 
 ## 🙏 Acknowledgments
 

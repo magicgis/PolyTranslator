@@ -22,7 +22,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-lang-generator = "1.0"
+lang-generator = "1.0.3"
 ```
 
 Use the procedural macro in your code:

@@ -23,7 +23,7 @@
 
 ```toml
 [dependencies]
-lang-generator = "1.0"
+lang-generator = "1.0.3"
 ```
 
 在代码中使用过程宏：
