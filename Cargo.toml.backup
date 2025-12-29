@@ -1,10 +1,12 @@
 [package]
 name = "poly-translator"
 edition = "2021"
-version = "1.0.5"
+version = "1.0.6"
 description = "A high-performance multilingual translation library supporting multiple translation services"
 license = "MIT"
-# # publish = false
+repository = "https://github.com/magicgis/PolyTranslator"
+documentation = "https://docs.rs/poly-translator"
+# # # publish = false
 
 [features]
 
